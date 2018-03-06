@@ -1,16 +1,23 @@
 language: python
 python:
-  - "2.7"
-  - "3.5"
-  - "3.6"
-
+- '2.7'
+- '3.5'
+- '3.6'
 install:
-  - pip install codecov
-  - pip install coverage
-
+- pip install codecov
+- pip install coverage
 script:
-  - python ./ci_python/hello.py
-  - coverage run ./ci_python/test.py #run code coverage
-
+- python ./ci_python/hello.py
+- coverage run ./ci_python/test.py
 after_success:
-  - codecov --token=054205c8-f49f-4857-aa8a-d6c33dbd38c9 #upload report to codecov.io
+- codecov --token=054205c8-f49f-4857-aa8a-d6c33dbd38c9
+
+deploy:
+  provider: s3
+  access_key_id:
+  secret_access_key:AKIAJWC7UX35FXU7QI5Q
+    secure: "HTZUInxKMtDhqFhhmsLTgxOIbkWMcCfl+F+rAVrPXU8LoUEgqBWe1SC5A6MojkFh5fIQuqXCAleKS12EPjCzYwRh+paXfQNoQZLZOnZ0T2Td2Z36PdxxEip1qnJjMaGNwauAF9BUNjkGOpDRBk2O+oZk9zJx4rppnVC62WO8qxBwMc/UZxfAmOlxlTz3KcX6bT0wDHSpt8/zp81szBwNbN0uq3t1omHgOb0k1cFPYzgwCh5mbMWpWWEBhJU2GZfsBLS6H1UjxtlJ31eVBd4MQeXHE5UHmM6RNjLomhVbhRPOwXAcHyukellCtwu0mImlx9lfiv3SS9sIN90D1vrWNc41cOshLhHgwLIgDVwOQLr/smEhX7mZ5hFdbimkq/OG+0Ufq+eLdP33LTR35wIF/KvU5J14HsHLfVbdomikdgjaveNCK2JG1/w+OZruHPFoND1grnqvni+PF5xD4lgyizqFVWF21L4UQJg/WZmzipWG99haCquKSpgQBTmIfef8glhvc/W3OnWWGRV1uBC7cud3iyXe0HLXmivuqj0TB8KtDDBFTq/mM8A29cXhDls7T46g77HHPdKO6EfKdtpkG53z4viwRlrR1JuHrmLtdKuq8z6E5K6h8+UfvIxb+7LgyiT6txGncjXHrbLF/sCIl1PmGcUGoAVIEqv+K4tCnp8="
+  bucket:
+    philam18-bucket1
+  local-dir: s3_html
+  region: us-east-2
