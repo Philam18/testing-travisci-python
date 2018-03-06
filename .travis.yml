@@ -9,7 +9,7 @@ install:
   - pip install coverage
 
 script:
-  - python hello.py
+  - python ./ci_python/hello.py
   - coverage run ./ci_python/test.py #run code coverage
 
 after_success:
