@@ -4,6 +4,13 @@ python:
   - "3.5"
   - "3.6"
 
+install:
+  - pip install codecov
+  - pip install coverage
+
 script:
   - python hello.py
-  
+  - coverage run ./ci_python/test.py #run code coverage
+
+after_success:
+  - codecov --token=054205c8-f49f-4857-aa8a-d6c33dbd38c9 #upload report to codecov.io
